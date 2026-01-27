@@ -12,6 +12,11 @@ const PomodoroTimer = () => {
 
   formatTime(secondsTotal);
 
+  function handleModeChange(tempo) {
+    setSecondsTotal(tempo);
+    setIsActive(false);
+  }
+
   useEffect(() => {
     if (!isActive || secondsTotal <= 0) return;
     const interval = setInterval(() => {
@@ -26,24 +31,21 @@ const PomodoroTimer = () => {
       <div className="flex gap-3">
         <button
           onClick={() => {
-            setSecondsTotal(1500);
-            setIsActive(false);
+            handleModeChange(1500);
           }}
         >
           Foco
         </button>
         <button
           onClick={() => {
-            setSecondsTotal(300);
-            setIsActive(false);
+            handleModeChange(300);
           }}
         >
           Curta
         </button>
         <button
           onClick={() => {
-            setSecondsTotal(900);
-            setIsActive(false);
+            handleModeChange(900);
           }}
         >
           Longa
