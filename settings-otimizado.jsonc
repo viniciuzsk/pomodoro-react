@@ -1,0 +1,390 @@
+{
+  // ═══════════════════════════════════════════════════════════════════
+  // 🖥️ TERMINAL - Git Bash otimizado
+  // ═══════════════════════════════════════════════════════════════════
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": ["--login"],
+    },
+  },
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "JetBrains Mono, Fira Code, Consolas",
+  "terminal.integrated.lineHeight": 1.4,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.copyOnSelection": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // ✏️ EDITOR - Fonte e aparência
+  // ═══════════════════════════════════════════════════════════════════
+  "editor.fontFamily": "JetBrains Mono, Fira Code, Cascadia Code, Consolas, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.lineHeight": 1.6,
+  "editor.letterSpacing": 0.3,
+  "editor.fontWeight": "400",
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🎨 INTERFACE MINIMALISTA
+  // ═══════════════════════════════════════════════════════════════════
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.horizontal": "auto",
+  "editor.scrollbar.verticalScrollbarSize": 8,
+  "editor.scrollbar.horizontalScrollbarSize": 8,
+  "editor.overviewRulerBorder": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.renderLineHighlight": "gutter",
+  "editor.glyphMargin": false,
+  "editor.folding": true,
+  "editor.foldingHighlight": false,
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairs": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorWidth": 2,
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 3,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 📑 TABS - Múltiplas abas habilitadas
+  // ═══════════════════════════════════════════════════════════════════
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.tabCloseButton": "right",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.wrapTabs": false,
+  "workbench.editor.pinnedTabsOnSeparateRow": false,
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 10,
+  "workbench.editor.limit.perEditorGroup": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🪟 JANELA E LAYOUT
+  // ═══════════════════════════════════════════════════════════════════
+  "window.menuBarVisibility": "compact",
+  "window.titleBarStyle": "custom",
+  "window.commandCenter": false,
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.location": "top",
+  "workbench.sideBar.location": "right",
+  "workbench.layoutControl.enabled": false,
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "off",
+  "zen.fullScreen": false,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // ⚡ PRODUTIVIDADE - Edição inteligente
+  // ═══════════════════════════════════════════════════════════════════
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.linkedEditing": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoSurround": "languageDefined",
+  "editor.trimAutoWhitespace": true,
+
+  // 🔑 MUDANÇAS CRÍTICAS PARA REACT:
+  // "inline" = snippets aparecem junto, não no topo (evita "class" JS aparecer primeiro)
+  "editor.snippetSuggestions": "inline",
+  // "recentlyUsedByPrefix" = prioriza o que vc já usou pra aquele prefixo
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  // Desliga sugestões baseadas em palavras do arquivo (poluía com lixo)
+  "editor.wordBasedSuggestions": "off",
+  // Prioriza sugestões locais/do contexto atual
+  "editor.suggest.localityBonus": true,
+  // Esconde keywords genéricas do JS (class, function, etc) das sugestões
+  "editor.suggest.showKeywords": false,
+  // Substitui ao invés de inserir (evita duplicação)
+  "editor.suggest.insertMode": "replace",
+  // Filtragem mais inteligente
+  "editor.suggest.filterGraceful": true,
+  // Preview da sugestão inline
+  "editor.suggest.preview": true,
+
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on",
+  "editor.parameterHints.enabled": true,
+  "editor.hover.delay": 300,
+  "editor.hover.sticky": true,
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit",
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    // ✅ Essencial pro Tailwind: autocomplete dentro de strings (className="...")
+    "strings": true,
+  },
+  "editor.inlineSuggest.enabled": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🔍 BUSCA E NAVEGAÇÃO
+  // ═══════════════════════════════════════════════════════════════════
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.find.seedSearchStringFromSelection": "selection",
+  "workbench.quickOpen.closeOnFocusLost": true,
+  "workbench.quickOpen.preserveInput": false,
+  "search.smartCase": true,
+  "search.showLineNumbers": true,
+  "search.quickOpen.includeHistory": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // ⚛️ REACT / JAVASCRIPT / TYPESCRIPT
+  // ═══════════════════════════════════════════════════════════════════
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  // Autocompleta chamadas de função com ()
+  "javascript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  // Auto-preenche atributos JSX corretamente
+  "javascript.preferences.jsxAttributeCompletionStyle": "auto",
+  "typescript.preferences.jsxAttributeCompletionStyle": "auto",
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 📝 EMMET - JSX otimizado (className ao invés de class!)
+  // ═══════════════════════════════════════════════════════════════════
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  // 🔑 Força o Emmet a gerar className em JSX (resolve o problema de "class")
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "typescript": "jsx",
+  },
+  "emmet.preferences": {
+    "jsx.enabled": true,
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🎯 ASSOCIAÇÃO DE ARQUIVOS
+  // ═══════════════════════════════════════════════════════════════════
+  // ⚠️ REMOVIDO: "*.js": "javascriptreact" — isso QUEBRAVA tudo!
+  // Arquivos como vite.config.js, eslint.config.js eram tratados como React
+  // e o IntelliSense ficava confuso. Arquivos .jsx JÁ SÃO reconhecidos
+  // automaticamente como React pelo VS Code.
+  "files.associations": {
+    // Ativa o Tailwind IntelliSense completo nos arquivos CSS
+    "*.css": "tailwindcss",
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🌊 TAILWIND CSS - IntelliSense turbinado
+  // ═══════════════════════════════════════════════════════════════════
+  // Integra sugestões do Emmet com Tailwind
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact",
+  },
+  // Onde o Tailwind deve dar autocomplete de classes
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "variants"],
+  // Detecta classes Tailwind em funções utilitárias (clsx, cn, cva, etc)
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    "(?:const|let|var)\\s+\\w*[Ss]tyles?\\w*\\s*=\\s*[\"'`]([^\"'`]*)[\"'`]",
+  ],
+  "tailwindCSS.suggestions": true,
+  "tailwindCSS.validate": true,
+  // Lint do Tailwind
+  "tailwindCSS.lint.cssConflict": "warning",
+  "tailwindCSS.lint.invalidApply": "error",
+  "tailwindCSS.lint.invalidScreen": "error",
+  "tailwindCSS.lint.invalidVariant": "error",
+  "tailwindCSS.lint.invalidConfigPath": "error",
+  "tailwindCSS.lint.invalidTailwindDirective": "error",
+  "tailwindCSS.lint.recommendedVariantOrder": "warning",
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 💅 PRETTIER - Formatação de código
+  // ═══════════════════════════════════════════════════════════════════
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true,
+    },
+  },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.semi": true,
+  "prettier.printWidth": 80,
+  "prettier.jsxSingleQuote": false,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🚀 PERFORMANCE - Exclusões e otimizações
+  // ═══════════════════════════════════════════════════════════════════
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/coverage": true,
+    "**/.next": true,
+    "**/.cache": true,
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.next": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true,
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true,
+    "**/.git/objects/**": true,
+    "**/.next/**": true,
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🎨 TEMA E ÍCONES
+  // ═══════════════════════════════════════════════════════════════════
+  "workbench.colorTheme": "Origamid Next Future",
+  "workbench.iconTheme": "bearded-icons",
+  "workbench.productIconTheme": "fluent-icons",
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 💾 ARQUIVOS - Auto save e encoding
+  // ═══════════════════════════════════════════════════════════════════
+  "files.autoSave": "onFocusChange",
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 📁 EXPLORER - Navegação de arquivos
+  // ═══════════════════════════════════════════════════════════════════
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": true,
+  "explorer.sortOrder": "type",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .npmrc",
+    "tsconfig.json": "tsconfig.*.json",
+    "vite.config.*": "vitest.config.*, postcss.config.*, tailwind.config.*",
+    ".eslintrc*": ".eslintignore, .prettierrc*, .prettierignore",
+    "eslint.config.*": ".eslintignore, .prettierrc*, .prettierignore",
+    "*.js": "${capture}.js.map, ${capture}.min.js",
+    "*.ts": "${capture}.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.css, ${capture}.module.css",
+    "*.tsx": "${capture}.css, ${capture}.module.css",
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🔀 GIT - Controle de versão
+  // ═══════════════════════════════════════════════════════════════════
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": true,
+  "scm.diffDecorations": "gutter",
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🔧 EXTENSÕES E RECOMENDAÇÕES
+  // ═══════════════════════════════════════════════════════════════════
+  "extensions.ignoreRecommendations": false,
+  "extensions.autoUpdate": true,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🤖 COPILOT (desabilitado conforme preferência)
+  // ═══════════════════════════════════════════════════════════════════
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 🧹 LIMPEZA E PRIVACIDADE
+  // ═══════════════════════════════════════════════════════════════════
+  "telemetry.telemetryLevel": "off",
+  "update.showReleaseNotes": false,
+  "workbench.tips.enabled": false,
+  "workbench.startupEditor": "none",
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "security.workspace.trust.enabled": false,
+
+  // ═══════════════════════════════════════════════════════════════════
+  // 💬 CHAT E OUTROS
+  // ═══════════════════════════════════════════════════════════════════
+  "chat.viewSessions.orientation": "stacked",
+  "workbench.editor.tabActionLocation": "right",
+}

@@ -1,17 +1,75 @@
-# React + Vite
+# PomoFocus - React Pomodoro Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação de gerenciamento de tempo baseada na técnica Pomodoro, desenvolvida para estudo aprofundado de fluxo de dados e gerenciamento de estado no React.
 
-Currently, two official plugins are available:
+## Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto consiste em um timer configurável que alterna entre modos de Foco, Pausa Curta e Pausa Longa. O objetivo principal do desenvolvimento foi solidificar conceitos fundamentais do React, evitando bibliotecas externas para lógica de estado, priorizando soluções nativas e arquitetura limpa.
 
-## React Compiler
+## Funcionalidades Principais
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Timer Preciso:** Contagem regressiva que respeita o ciclo de vida do componente.
+- **Modos Alternáveis:** Troca dinâmica entre Foco, Descanso Curto e Descanso Longo.
+- **Configuração Personalizada:** Modal de ajustes que permite ao usuário definir a duração de cada modo.
+- **Persistência de Dados:** As configurações e o modo atual são salvos no LocalStorage, mantendo as preferências do usuário mesmo após recarregar a página.
+- **Feedback Visual:** A interface altera a paleta de cores inteira baseada no modo atual (Foco/Descanso) para melhor experiência do usuário (UX).
+- **Interface Responsiva:** Estilização moderna e adaptativa utilizando Tailwind CSS.
 
-## Expanding the ESLint configuration
+## Conceitos Técnicos e Aprendizados
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# pomodoro-react
+Este projeto foi fundamental para a aplicação prática de conceitos de Engenharia de Software no front-end:
+
+### 1. Lifting State Up (Elevação de Estado)
+
+O desafio de sincronizar o Timer com o Modal de Configurações foi resolvido elevando o estado para o componente pai (`App.jsx`). Isso garantiu uma "Única Fonte de Verdade" (Single Source of Truth), onde tanto o timer quanto o modal consomem e atualizam os mesmos dados.
+
+### 2. Componentes Controlados (Controlled Components)
+
+No modal de configurações, os inputs não gerenciam seu próprio estado internamente de forma isolada. Foi implementado o padrão de Componentes Controlados, onde o React detém o estado do formulário em tempo real, permitindo validação e manipulação precisa dos dados antes do envio.
+
+### 3. Gerenciamento de Side Effects
+
+Uso estratégico do hook `useEffect` para:
+
+- Gerenciar o intervalo do timer (`setInterval`) e garantir a limpeza da memória (`clearInterval`) quando o componente desmonta ou o timer pausa.
+- Sincronizar o estado da aplicação com o `localStorage` sempre que houver alterações.
+- Manipular o DOM diretamente para alterar a cor de fundo do `body` conforme o estado.
+
+### 4. Comunicação entre Componentes (Callbacks)
+
+Implementação de funções de callback passadas via props para permitir que componentes filhos (`SettingsModal`) comuniquem alterações para o componente pai (`App`), resolvendo problemas comuns de fluxo de dados unidirecional.
+
+### 5. Imutabilidade de Estado
+
+Manipulação correta de estados complexos (objetos) utilizando o spread operator para garantir a imutabilidade durante as atualizações parciais do formulário.
+
+## Tecnologias Utilizadas
+
+- **React** (Hooks: useState, useEffect)
+- **Vite** (Build tool)
+- **Tailwind CSS** (Estilização)
+- **Lucide React** (Ícones)
+- **JavaScript (ES6+)**
+
+## Como Executar
+
+1. Clone o repositório:
+
+```bash
+git clone https://seu-link-do-github-aqui.git
+
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+
+```
+
+3. Rode o servidor de desenvolvimento:
+
+```bash
+npm run dev
+
+```

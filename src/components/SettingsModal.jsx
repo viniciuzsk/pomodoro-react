@@ -1,52 +1,91 @@
 import { X } from 'lucide-react';
+import { useState } from 'react';
 
-const SettingsModal = ({ onClose }) => {
+const SettingsModal = ({ onClose, timers, setTimers }) => {
+  const [formData, setFormData] = useState({
+    focus: timers.focus,
+    short: timers.short,
+    long: timers.long,
+  });
+
+  function changeInputValue(e) {
+    const { name, value } = e.target;
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [name]: Number(value),
+      };
+    });
+  }
+
+  function salvarMudancas() {
+    setTimers(formData);
+    onClose();
+  }
+
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white w-full max-w-sm rounded-2xl p-6 shadow-xl relative animate-in fade-in zoom-in duration-200">
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+      <div className="bg-white w-full max-w-md rounded-2xl p-6 shadow-xl relative animate-in fade-in zoom-in-95 duration-300">
         <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
-          <h2 className="text-xl font-bold text-gray-700">Configurações</h2>
+          <h2 className="text-xl font-bold text-gray-800">Configurações</h2>
 
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+            className="text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-100 p-1"
           >
             <X size={24} />
           </button>
         </div>
 
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <label className="text-sm font-medium text-gray-600">
+        <div className="space-y-6">
+          <div>
+            <label className="text-sm font-medium text-gray-600 mb-2 block">
               Foco (minutos)
             </label>
             <input
+              value={formData.focus}
+              onChange={changeInputValue}
+              name="focus"
               type="number"
-              className="w-17 p-2 border border-gray-200 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent transition-all"
+              className="w-full p-2.5 border border-gray-200 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-rose-300 focus:border-transparent transition-all"
               placeholder="25"
             />
           </div>
-          <div className="flex justify-between items-center">
-            <label className="text-sm font-medium text-gray-600">
-              Curta (minutos)
+          <div>
+            <label className="text-sm font-medium text-gray-600 mb-2 block">
+              Descanso (minutos)
             </label>
             <input
+              name="short"
+              value={formData.short}
+              onChange={changeInputValue}
               type="number"
-              className="w-17 p-2 border border-gray-200 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-transparent transition-all"
+              className="w-full p-2.5 border border-gray-200 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-transparent transition-all"
               placeholder="5"
             />
           </div>
 
-          <div className="flex justify-between items-center">
-            <label className="text-sm font-medium text-gray-600">
-              Longa (minutos)
+          <div>
+            <label className="text-sm font-medium text-gray-600 mb-2 block">
+              Pausa Longa (minutos)
             </label>
             <input
+              name="long"
+              value={formData.long}
+              onChange={changeInputValue}
               type="number"
-              className="w-17 p-2 border border-gray-200 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all"
+              className="w-full p-2.5 border border-gray-200 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all"
               placeholder="15"
             />
           </div>
+        </div>
+        <div className="flex justify-end mt-8">
+          <button
+            onClick={salvarMudancas}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
+          >
+            Salvar
+          </button>
         </div>
       </div>
     </div>

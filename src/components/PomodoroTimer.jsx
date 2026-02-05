@@ -21,7 +21,7 @@ const MODES = {
     shadowColor: 'shadow-rose-500/30',
   },
   short: {
-    label: 'Curta',
+    label: 'Descanso',
     time: 300,
     icon: <Coffee />,
     card: 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30',
@@ -31,7 +31,7 @@ const MODES = {
     shadowColor: 'shadow-emerald-500/30',
   },
   long: {
-    label: 'Longa',
+    label: 'Pausa Longa',
     time: 900,
     icon: <Armchair />,
     card: 'bg-blue-500 text-white shadow-lg shadow-blue-500/30',
@@ -42,15 +42,15 @@ const MODES = {
   },
 };
 
-const PomodoroTimer = () => {
+const PomodoroTimer = ({ timers }) => {
   const [currentMode, setCurrentMode] = useState(() => {
     const saved = localStorage.getItem('pomodoro_mode');
-    return saved && MODES[saved] ? saved : 'focus';
+    return saved && timers[saved] ? saved : 'focus';
   });
 
   const [secondsTotal, setSecondsTotal] = useState(() => {
     const saved = localStorage.getItem('pomodoro_seconds');
-    return saved ? Number(saved) : MODES.focus.time;
+    return saved ? Number(saved) : timers[currentMode] * 60;
   });
   const [isActive, setIsActive] = useState(false);
   const formatTime = (totalSeconds) => {
@@ -91,28 +91,34 @@ const PomodoroTimer = () => {
   }, [isActive, secondsTotal]);
 
   function resetTime() {
-    setSecondsTotal(MODES[currentMode].time);
+    setSecondsTotal(timers[currentMode] * 60);
     setIsActive(false);
   }
 
   function handleChangeMode(modeKey) {
     setCurrentMode(modeKey);
-    setSecondsTotal(MODES[modeKey].time);
+    setSecondsTotal(timers[modeKey] * 60);
     setIsActive(false);
   }
 
+  useEffect(() => {
+    if (secondsTotal === 0) {
+      setIsActive(false);
+      setSecondsTotal(timers[currentMode] * 60);
+    }
+  }, [secondsTotal, timers, currentMode]);
+
   return (
-    <div className="mt-20 flex flex-col items-center w-full max-w-md px-4 mx-auto">
-      {/* Container dos Botões */}
-      <div className="flex justify-center gap-2 p-1 rounded-full mb-12 bg-black/5 backdrop-blur-sm border border-black/5 w-full">
+    <div className="mt-16 flex flex-col items-center w-full max-w-lg px-4 mx-auto">
+      <div className="flex justify-center gap-2 p-2 rounded-full mb-12 bg-gray-200/50 w-full">
         {Object.keys(MODES).map((modeKey) => (
           <button
             key={modeKey} // A Key vai direto no elemento repetido
             onClick={() => handleChangeMode(modeKey)}
             className={`
-              flex-1 px-4 py-2 text-gray-600 rounded-full text-sm font-medium
-              transition-all duration-300 flex items-center justify-center gap-2
-              ${currentMode === modeKey ? MODES[modeKey].card : MODES[modeKey].hover}
+              flex-1 px-4 py-3 text-gray-600 rounded-full text-sm font-semibold
+              transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer
+              ${currentMode === modeKey ? MODES[modeKey].card : 'hover:bg-white/50'}
             `}
           >
             {MODES[modeKey].icon}
@@ -120,11 +126,9 @@ const PomodoroTimer = () => {
           </button>
         ))}
       </div>
-
-      {/* Timer Gigante */}
       <div className="text-center mb-10">
         <p
-          className={`${MODES[currentMode].primaryColor} text-[8rem] leading-none font-bold tracking-tighter tabular-nums transition-colors duration-300 select-none`}
+          className={`${MODES[currentMode].primaryColor} text-[9rem] leading-none font-bold tracking-tighter tabular-nums transition-colors duration-300 select-none`}
         >
           {formatTime(secondsTotal)}
         </p>
@@ -132,30 +136,30 @@ const PomodoroTimer = () => {
           {isActive ? 'Em Progresso' : 'Pausado'}
         </p>
       </div>
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-4">
         <button
           className={`
             ${MODES[currentMode].backgroundColor} ${MODES[currentMode].shadowColor}
-            w-20 h-20 rounded-3xl flex items-center justify-center
+            w-24 h-24 rounded-full flex items-center justify-center
             transition-all duration-200 transform hover:scale-105 active:scale-95
-            shadow-xl text-white
+            shadow-xl text-white cursor-pointer
           `}
           onClick={() => setIsActive(!isActive)}
         >
           {isActive ? (
-            <Pause fill="white" stroke="white" />
+            <Pause size={32} fill="white" stroke="white" />
           ) : (
-            <Play fill="white" stroke="white" className="ml-1" />
+            <Play size={32} fill="white" stroke="white" className="ml-1" />
           )}
         </button>
         <button
           onClick={resetTime}
-          className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all border-2 border-black/5 hover:bg-black/5 text-gray-600"
+          className="cursor-pointer w-16 h-16 rounded-full flex items-center justify-center transition-all bg-gray-200/50 hover:bg-gray-200/80 text-gray-600"
         >
           <RotateCcw size={24} />
         </button>
 
-        <button className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all border-2 border-black/5 hover:bg-black/5 text-gray-600">
+        <button className="cursor-pointer w-16 h-16 rounded-full flex items-center justify-center transition-all bg-gray-200/50 hover:bg-gray-200/80 text-gray-600">
           <Volume2 size={24} />
         </button>
       </div>
