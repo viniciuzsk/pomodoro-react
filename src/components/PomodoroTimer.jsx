@@ -8,6 +8,7 @@ import {
   Volume2,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const MODES = {
   focus: {
@@ -47,6 +48,8 @@ const PomodoroTimer = ({ timers }) => {
     const saved = localStorage.getItem('pomodoro_mode');
     return saved && timers[saved] ? saved : 'focus';
   });
+
+  const [value, setValue] = useLocalStorage('pomodoro_seconds', 1000);
 
   const [secondsTotal, setSecondsTotal] = useState(() => {
     const saved = localStorage.getItem('pomodoro_seconds');
