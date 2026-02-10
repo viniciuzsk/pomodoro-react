@@ -7,7 +7,7 @@ import {
   RotateCcw,
   Volume2,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const MODES = {
@@ -82,16 +82,19 @@ const PomodoroTimer = ({ timers }) => {
     return () => clearInterval(interval);
   }, [isActive, secondsTotal]);
 
-  function resetTime() {
+  const resetTime = useCallback(() => {
     setSecondsTotal(timers[currentMode] * 60);
     setIsActive(false);
-  }
+  }, [timers, currentMode]);
 
-  function handleChangeMode(modeKey) {
-    setCurrentMode(modeKey);
-    setSecondsTotal(timers[modeKey] * 60);
-    setIsActive(false);
-  }
+  const handleChangeMode = useCallback(
+    (modeKey) => {
+      setCurrentMode(modeKey);
+      setSecondsTotal(timers[modeKey] * 60);
+      setIsActive(false);
+    },
+    [timers]
+  );
 
   const mode = MODES[currentMode] || MODES['focus'];
 

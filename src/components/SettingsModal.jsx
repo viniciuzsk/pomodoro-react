@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const SettingsModal = ({ onClose, timers, setTimers }) => {
   const [formData, setFormData] = useState({
@@ -7,6 +7,11 @@ const SettingsModal = ({ onClose, timers, setTimers }) => {
     short: timers.short,
     long: timers.long,
   });
+
+  const inputTime = useRef();
+  useEffect(() => {
+    inputTime.current.focus();
+  }, []);
 
   function changeInputValue(e) {
     const { name, value } = e.target;
@@ -18,10 +23,10 @@ const SettingsModal = ({ onClose, timers, setTimers }) => {
     });
   }
 
-  function salvarMudancas() {
+  const salvarMudancas = useCallback(() => {
     setTimers(formData);
     onClose();
-  }
+  }, [formData, setTimers, onClose]);
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
@@ -43,6 +48,7 @@ const SettingsModal = ({ onClose, timers, setTimers }) => {
               Foco (minutos)
             </label>
             <input
+              ref={inputTime}
               value={formData.focus}
               onChange={changeInputValue}
               name="focus"
