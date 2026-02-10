@@ -44,31 +44,20 @@ const MODES = {
 };
 
 const PomodoroTimer = ({ timers }) => {
-  const [currentMode, setCurrentMode] = useState(() => {
-    const saved = localStorage.getItem('pomodoro_mode');
-    return saved && timers[saved] ? saved : 'focus';
-  });
-
-  const [value, setValue] = useLocalStorage('pomodoro_seconds', 1000);
-
-  const [secondsTotal, setSecondsTotal] = useState(() => {
-    const saved = localStorage.getItem('pomodoro_seconds');
-    return saved ? Number(saved) : timers[currentMode] * 60;
-  });
+  const [currentMode, setCurrentMode] = useLocalStorage(
+    'pomodoro_mode',
+    'focus'
+  );
+  const [secondsTotal, setSecondsTotal] = useLocalStorage(
+    'pomodoro_seconds',
+    timers[currentMode] * 60
+  );
   const [isActive, setIsActive] = useState(false);
   const formatTime = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
     return `${minutes}:${seconds < 10 ? `0${seconds}` : `${seconds}`}`;
   };
-
-  useEffect(() => {
-    localStorage.setItem('pomodoro_seconds', secondsTotal.toString());
-  }, [secondsTotal]);
-
-  useEffect(() => {
-    localStorage.setItem('pomodoro_mode', currentMode);
-  }, [currentMode]);
 
   useEffect(() => {
     const body = document.body;
@@ -104,6 +93,8 @@ const PomodoroTimer = ({ timers }) => {
     setIsActive(false);
   }
 
+  const mode = MODES[currentMode] || MODES['focus'];
+
   useEffect(() => {
     if (secondsTotal === 0) {
       setIsActive(false);
@@ -131,7 +122,7 @@ const PomodoroTimer = ({ timers }) => {
       </div>
       <div className="text-center mb-10">
         <p
-          className={`${MODES[currentMode].primaryColor} text-[9rem] leading-none font-bold tracking-tighter tabular-nums transition-colors duration-300 select-none`}
+          className={`${mode.primaryColor} text-[9rem] leading-none font-bold tracking-tighter tabular-nums transition-colors duration-300 select-none`}
         >
           {formatTime(secondsTotal)}
         </p>
@@ -142,7 +133,7 @@ const PomodoroTimer = ({ timers }) => {
       <div className="flex items-center gap-4">
         <button
           className={`
-            ${MODES[currentMode].backgroundColor} ${MODES[currentMode].shadowColor}
+            ${mode.backgroundColor} ${mode.shadowColor}
             w-24 h-24 rounded-full flex items-center justify-center
             transition-all duration-200 transform hover:scale-105 active:scale-95
             shadow-xl text-white cursor-pointer
