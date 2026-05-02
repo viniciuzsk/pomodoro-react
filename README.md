@@ -2,6 +2,8 @@
 
 Uma aplicação de gerenciamento de tempo baseada na técnica Pomodoro, desenvolvida para estudo aprofundado de fluxo de dados e gerenciamento de estado no React.
 
+![alt](Area.gif)
+
 ## Sobre o Projeto
 
 Este projeto consiste em um timer configurável que alterna entre modos de Foco, Pausa Curta e Pausa Longa. O objetivo principal do desenvolvimento foi solidificar conceitos fundamentais do React, evitando bibliotecas externas para lógica de estado, priorizando soluções nativas e arquitetura limpa.
